@@ -6,7 +6,6 @@ plugins {
 
 android {
     namespace 'com.tbm.lyricsoverlay'
-    compileSdk 36
 
     defaultConfig {
         applicationId "com.tbm.lyricsoverlay"
@@ -24,9 +23,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+    compileSdk {
+        version = release(36)
     }
+    buildToolsVersion '36.1.0'
 }
 
 dependencies {
