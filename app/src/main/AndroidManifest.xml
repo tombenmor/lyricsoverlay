@@ -1,15 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tbm.lyricsoverlay">
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:label="YTMusic Lyrics Overlay"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:label="Lyrics Overlay"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:icon="@mipmap/decendingangelblackmetal">
 
         <activity android:name="com.tbm.lyricsoverlay.MainActivity"
             android:exported="true">
