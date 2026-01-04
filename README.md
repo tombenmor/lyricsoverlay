@@ -1,21 +1,49 @@
 # LyricsOverlay 🎵📜
 
-LyricsOverlay is an Android app that displays song lyrics for the **currently playing track in YouTube Music**, using an **always-on floating overlay**.
-A draggable floating action button (FAB) appears over all apps; tapping it toggles a lyrics panel that can be shown or hidden at any time.
+![Android](https://img.shields.io/badge/Android-8.0%2B-green)
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9-blue)
+![minSdk](https://img.shields.io/badge/minSdk-23-orange)
+![targetSdk](https://img.shields.io/badge/targetSdk-34-brightgreen)
 
-This project is intended for **personal use, experimentation, and learning** around Android overlays, foreground services, and media metadata access.
+LyricsOverlay is an Android app that displays lyrics for the currently playing song in **YouTube Music** using an always-on floating overlay.
+
+A draggable floating bubble appears over all apps; tapping it toggles a lyrics panel at any time.
 
 ---
 
 ## ✨ Features
-
 - 🎶 Detects the currently playing song from **YouTube Music**
 - 📜 Fetches lyrics from a public lyrics API
 - 🟢 Always-available **floating bubble (FAB)** overlay
 - 📌 Lyrics panel overlay that works over *any app*
 - 🖱 Draggable overlays (bubble + lyrics pane)
-- 🔔 Foreground service for reliability on modern Android
-- 🛡 Defensive handling of permissions and system restrictions
+
+---
+
+## 📸 Screenshots / Demo
+
+> _Placeholders — replace with real images or GIFs_
+
+```
+/screenshots/
+ ├─ floating_bubble.png
+ ├─ lyrics_overlay.png
+ └─ demo.gif
+```
+
+Example markdown:
+```md
+![Floating Bubble](screenshots/floating_bubble.png)
+![Lyrics Overlay](screenshots/lyrics_overlay.png)
+```
+
+---
+
+## 🚀 Build & Run
+```bash
+./gradlew :app:assembleDebug
+adb install -r app/build/outputs/apk/debug/app-debug.apk
+```
 
 ---
 
@@ -29,20 +57,6 @@ This project is intended for **personal use, experimentation, and learning** aro
 | Notification Access | Read song metadata |
 
 > Notification access and overlay permission must be granted manually in system settings.
-
----
-
-## 🚀 Build & Install
-
-### Build debug APK
-```bash
-./gradlew clean :app:assembleDebug
-```
-
-### Install on device
-```bash
-adb install -r app/build/outputs/apk/debug/app-debug.apk
-```
 
 ---
 
@@ -77,62 +91,11 @@ Common issues:
 
 ---
 
-## 📱 How It Works
-
-1. **NotificationListenerService**
-    - Listens for media notifications from YouTube Music
-    - Extracts song title and artist
-
-2. **OverlayService**
-    - Runs as a foreground service
-    - Hosts the floating FAB and lyrics overlay
-    - Uses `WindowManager.TYPE_APPLICATION_OVERLAY`
-
-3. **Lyrics Fetching**
-    - Lyrics are fetched via Retrofit + OkHttp
-    - Network calls are executed with Kotlin coroutines
+## 📚 Documentation
+- [Architecture](ARCHITECTURE.md)
 
 ---
 
-## 🧩 Architecture
-
-```
-MainActivity
- └─ starts OverlayService
-
-YTNotificationListenerService
- └─ reads YouTube Music notifications
-    └─ stores latest title & artist
-
-OverlayService
- ├─ floating FAB overlay
- ├─ lyrics overlay
- └─ foreground notification
-
-LyricsFetcher
- └─ lyrics.ovh API
-```
-
----
-
-## 📜 Legal Notice
-
-This project is **not affiliated with Google or YouTube Music**.
+## ⚠️ Disclaimer
+Not affiliated with Google or YouTube Music.  
 Lyrics may be copyrighted — use responsibly.
-
----
-
-## 🧠 Learning Topics
-
-- Foreground services (API 34)
-- Android overlays
-- NotificationListenerService
-- Material Components outside Activities
-- Kotlin coroutines
-- Retrofit / OkHttp
-
----
-
-## 📄 License
-
-Provided as-is for educational and personal use.
